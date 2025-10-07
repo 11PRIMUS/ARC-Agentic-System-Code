@@ -62,5 +62,15 @@ class ProblemLoader:
         
         return problems
     
+    def get_topic_count(self):
+        if not self.loaded:
+            return {}
+        return self.data['topic'].value_counts().to_dict()
+    
+    def get_total_problem(self):
+        if not self.loaded:
+            return 0
+        return len(self.data)
+    
 
         
