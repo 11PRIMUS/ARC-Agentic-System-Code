@@ -34,11 +34,11 @@ class ProblemLoader:
             'topic': row['topic'],
             'problem_statement':row['problem_statement'],
             'answer_option_1': row['answer_option_1'],
-                'answer_option_2': row['answer_option_2'],
-                'answer_option_3': row['answer_option_3'],
-                'answer_option_4': row['answer_option_4'],
-                'answer_option_5': row['answer_option_5'],
-                'index':index
+            'answer_option_2': row['answer_option_2'],
+            'answer_option_3': row['answer_option_3'],
+            'answer_option_4': row['answer_option_4'],
+            'answer_option_5': row['answer_option_5'],
+            'index':index
         }
     
     #get all problem for specifc topic
@@ -71,6 +71,23 @@ class ProblemLoader:
         if not self.loaded:
             return 0
         return len(self.data)
-    
+    def get_sample_problem(self, count=5):
+        if not self.loaded:
+            return []
+        sample_data=self.data.head(count)
+        problems=[]
+
+        for idx, row in sample_data.iterrows():
+            problems.append({
+                'topic': row['topic'],
+                'problem_statement': row['problem_statement'],
+                'answer_option_1': row['answer_option_1'],
+                'answer_option_2': row['answer_option_2'],
+                'answer_option_3': row['answer_option_3'],
+                'answer_option_4': row['answer_option_4'],
+                'answer_option_5': row['answer_option_5'],
+                'index': idx
+            })
+        return problems
 
         
