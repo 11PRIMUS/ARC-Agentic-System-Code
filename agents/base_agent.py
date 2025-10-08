@@ -10,18 +10,18 @@ class Baseagent:
         self.solve_history = []
 
     @abstractmethod
-    def can_handle(self, probelm_data):
+    def can_handle(self, problem_data):
         pass  
     @abstractmethod
     def solve(self, problem_data):
         pass
     
-    def analyze_problem(self, probelm_text):
-        problem_lower = probelm_text.lower()
+    def analyze_problem(self, problem_text):
+        problem_lower = problem_text.lower()
 
-        numbers = re.findall(r'\d+', probelm_text)
-        has_question ='?' in probelm_text
-        word_count =len(probelm_text.split())
+        numbers = re.findall(r'\d+', problem_text)
+        has_question ='?' in problem_text
+        word_count =len(problem_text.split())
         return {
             'numbers_found': numbers,
             'has_question': has_question,
